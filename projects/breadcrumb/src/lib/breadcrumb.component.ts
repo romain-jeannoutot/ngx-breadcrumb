@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lib-breadcrumb',
+  selector: 'ngx-breadcrumb',
   template: `
     <p>
       breadcrumb works!
