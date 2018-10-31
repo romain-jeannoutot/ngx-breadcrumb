@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivationEnd, Router } from "@angular/router";
 
 import { Breadcrumb } from "./breadcrumb";
+import { BreadcrumbService } from "./breadcrumb.service";
 
 @Component({
   selector: 'ngx-breadcrumb',
@@ -20,7 +21,7 @@ export class BreadcrumbComponent {
 
   public breadcrumbs: Breadcrumb[] = [];
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private breadcrumbService: BreadcrumbService) {
     this.router.events.subscribe(e => {
       if (e instanceof ActivationEnd) {
         if (e.snapshot.data.breadcrumbs) {
@@ -28,6 +29,8 @@ export class BreadcrumbComponent {
         }
       }
     });
+
+    this.breadcrumbService._addItem.subscribe(breadcrumb => this.breadcrumbs.push(breadcrumb));
   }
 
 }
