@@ -15,7 +15,7 @@ import { BreadcrumbModule } from "../../projects/breadcrumb/src/lib/breadcrumb.m
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BreadcrumbModule
+    BreadcrumbModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
