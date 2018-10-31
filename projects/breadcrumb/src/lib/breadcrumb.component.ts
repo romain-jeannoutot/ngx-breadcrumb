@@ -6,9 +6,13 @@ import { Breadcrumb } from "./breadcrumb";
 @Component({
   selector: 'ngx-breadcrumb',
   template: `
-    <p>
-      breadcrumb works!
-    </p>
+    <nav>
+      <ul>
+        <li *ngFor="let breadcrumb of breadcrumbs">
+          <a [routerLink]="breadcrumb.href">{{ breadcrumb.label }}</a>
+        </li>
+      </ul>
+    </nav>
   `,
   styles: []
 })
