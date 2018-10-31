@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivationEnd, Router } from "@angular/router";
 
 import { Breadcrumb } from "./breadcrumb";
@@ -7,10 +7,10 @@ import { BreadcrumbService } from "./breadcrumb.service";
 @Component({
   selector: 'ngx-breadcrumb',
   template: `
-    <nav>
-      <ul>
-        <li *ngFor="let breadcrumb of breadcrumbs">
-          <a [routerLink]="breadcrumb.href">{{ breadcrumb.label }}</a>
+    <nav [ngClass]="navClass">
+      <ul [ngClass]="ulClass">
+        <li *ngFor="let breadcrumb of breadcrumbs" [ngClass]="liClass" [routerLinkActive]="isActiveClass">
+          <a [ngClass]="aClass" [routerLink]="breadcrumb.href">{{ breadcrumb.label }}</a>
         </li>
       </ul>
     </nav>
@@ -18,6 +18,13 @@ import { BreadcrumbService } from "./breadcrumb.service";
   styles: []
 })
 export class BreadcrumbComponent {
+
+  @Input() isActiveClass = '';
+
+  @Input() navClass = '';
+  @Input() ulClass = '';
+  @Input() liClass = '';
+  @Input() aClass = '';
 
   public breadcrumbs: Breadcrumb[] = [];
 
