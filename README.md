@@ -1,27 +1,110 @@
-# NgxBreadcrumb
+# Ngx Breadcrumb
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.3.
+A basic Angular module to display breadcrumb using native Angular router.
 
-## Development server
+See a demo at: https://ngx-breadcrumb.ranout.xyz
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Table of contents
+=================
 
-## Code scaffolding
+  * [Install](#install)
+  * [Usage](#usage)
+  * [Service](#service)
+  * [Customize](#customize)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Install
 
-## Build
+Install the module via npm:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+    npm i --save @ranout/ngx-breadcrumb
 
-## Running unit tests
+## Usage
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+##### Step 1: Import the BreadcrumbModule:
 
-## Running end-to-end tests
+```js
+import { BreadcrumbModule } from '@ranout/ngx-breadcrumb';
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+@NgModule({
+  imports: [BreadcrumbModule.forRoot()]
+})
+export class AppModule { }
+```
 
-## Further help
+##### Step 2: Add breadcrumbs data to routes:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```js
+import { Breadcrumb } from '@ranout/ngx-breadcrumb';
+
+const routes: Routes = [{
+  path: 'home',
+  component: HomeComponent,
+  data: { 
+    breadcrumbs: [new Breadcrumb('Home', '/home')] 
+  }
+}];
+```
+
+##### Step 3: Place the ngx-breadcrumb component in your app.component.html:
+
+	<ngx-breadcrumb></ngx-breadcrumb>
+	<router-outlet></router-outlet>
+
+Enjoy :)
+
+## Service
+
+To add a breadcrumb item dynamically, use the addItem method declared in the BreadcrumbService:
+
+```js
+import { BreadcrumbService } from '@ranout/ngx-breadcrumb';
+
+export class HomeComponent implements OnInit {
+
+  constructor(private breadcrumbService: BreadcrumbService) { }
+
+  ngOnInit(): void {
+    this.breadcrumbService.addItem('Page', '/page');
+  }
+
+}
+```
+
+## Customize
+
+By default, the ngx-breadcrumb component looks like this:
+
+```html
+  <nav>
+    <ul>
+      <li *ngFor="let breadcrumb of breadcrumbs">
+        <a [routerLink]="breadcrumb.href">{{ breadcrumb.label }}</a>
+      </li>
+    </ul>
+  </nav>
+```
+
+To customize breadcrumb style, you can add css class on `<nav>`, `<ul>`, `<li>` and `<a>` tags, with respectively `navClass`, `ulClass`, `liClass` and `aClass` attributes.
+
+Too, you can add css class for active `li` element with `isActiveClass` attribute.
+
+For example, for Bulma:
+
+```html
+  <ngx-breadcrumb navClass="breadcrumb" isActiveClass="is-active"></ngx-breadcrumb>
+```
+
+will give the following result if current path is `/home`:
+
+```html
+  <nav class="breadcrumb">
+    <ul>
+      <li class="is-active">
+        <a routerLink="/home">Home</a>
+      </li>
+      <li>
+        <a routerLink="/page">Page</a>
+      </li>
+    </ul>
+  </nav>
+```
