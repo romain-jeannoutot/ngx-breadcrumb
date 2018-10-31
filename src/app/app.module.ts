@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PageComponent } from './pages/page/page.component';
 
+import { BreadcrumbModule } from "../../projects/breadcrumb/src/lib/breadcrumb.module";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -12,7 +14,8 @@ import { PageComponent } from './pages/page/page.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BreadcrumbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

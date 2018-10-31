@@ -16,6 +16,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "breadcrumb": [
+        "dist/breadcrumb"
+      ],
+      "breadcrumb/*": [
+        "dist/breadcrumb/*"
+      ]
+    }
   }
 }
