@@ -3,12 +3,20 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { PageComponent } from "./pages/page/page.component";
 
+import { Breadcrumb } from "../../projects/breadcrumb/src/lib/breadcrumb";
+
 const routes: Routes = [{
   path: 'home',
-  component: PageComponent
+  component: PageComponent,
+  data: {
+    breadcrumbs: [ new Breadcrumb('Home', '/home') ]
+  }
 }, {
   path: 'contact',
-  component: PageComponent
+  component: PageComponent,
+  data: {
+    breadcrumbs: [ new Breadcrumb('Contact', '/contact') ]
+  }
 }, {
   path: '**',
   redirectTo: 'home'

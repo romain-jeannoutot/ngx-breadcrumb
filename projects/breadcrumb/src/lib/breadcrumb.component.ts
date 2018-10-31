@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { ActivationEnd, Router } from "@angular/router";
+
+import { Breadcrumb } from "./breadcrumb";
 
 @Component({
   selector: 'ngx-breadcrumb',
@@ -9,11 +12,18 @@ import { Component, OnInit } from '@angular/core';
   `,
   styles: []
 })
-export class BreadcrumbComponent implements OnInit {
+export class BreadcrumbComponent {
 
-  constructor() { }
+  public breadcrumbs: Breadcrumb[] = [];
 
-  ngOnInit() {
+  constructor(private router: Router) {
+    this.router.events.subscribe(e => {
+      if (e instanceof ActivationEnd) {
+        if (e.snapshot.data.breadcrumbs) {
+          this.breadcrumbs = Object.assign([], e.snapshot.data.breadcrumbs);
+        }
+      }
+    });
   }
 
 }
