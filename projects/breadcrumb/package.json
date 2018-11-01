@@ -1,6 +1,7 @@
 {
   "name": "@ranout/ngx-breadcrumb",
-  "version": "1.0.3",
+  "version": "1.0.4",
+  "keywords": ["angular", "ng", "ngx", "breadcrumb", "angular breadcrumb", "ng breadcrumb", "ngx breadcrumb"],
   "peerDependencies": {
     "@angular/common": "^7.0.0",
     "@angular/core": "^7.0.0",
