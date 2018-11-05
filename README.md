@@ -1,5 +1,7 @@
 # Ngx Breadcrumb
 
+[![NPM version][npm-image]][npm-url]
+
 A basic Angular module to display breadcrumb using native Angular router.
 
 See a demo at: https://ngx-breadcrumb.ranout.xyz
@@ -108,3 +110,6 @@ will give the following result if current path is `/home`:
     </ul>
   </nav>
 ```
+
+[npm-image]: https://img.shields.io/badge/npm%20package-1.0.5-brightgreen.svg
+[npm-url]: https://www.npmjs.com/package/@ranout/ngx-breadcrumb
