@@ -1,7 +1,15 @@
 {
   "name": "@ranout/ngx-breadcrumb",
-  "version": "1.0.4",
+  "version": "1.0.5",
+  "description": "A basic Angular module to display breadcrumb using native Angular router.",
   "keywords": ["angular", "ng", "ngx", "breadcrumb", "angular breadcrumb", "ng breadcrumb", "ngx breadcrumb"],
+  "homepage": "https://github.com/romain-jeannoutot/ngx-breadcrumb#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/romain-jeannoutot/ngx-breadcrumb.git"
+  },
+  "author": "Romain Jeannoutot",
+  "private": false,
   "peerDependencies": {
     "@angular/common": "^7.0.0",
     "@angular/core": "^7.0.0",
